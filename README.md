@@ -22,7 +22,7 @@ The following **extensions** are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories: (https://i.imgur.com/YNf9vx3.gif "Video Walkthrough")
+Here's a walkthrough of implemented user stories: [Video Walkthrough](https://i.imgur.com/YNf9vx3.gif "Video Walkthrough")
 
 
 GIF created with Android Studio.
