@@ -58,4 +58,16 @@ class MainActivity : AppCompatActivity() {
         tvTotalRight.text = "%2f".format(totalAmount)
         tvTipRight.text = "%2f".format(tipAmount)
     }
+
+    private fun updateTipDescription(tipPercent: Int){
+        val tipDescription : String
+        when(tipPercent){
+            in 0..9 -> tipDescription = "Have you no sense of decency?"
+            in 10..25 -> tipDescription = "Well, that's more like it."
+            in 26..50 -> tipDescription = "Would you like to try our special dessert on the house?"
+            in 51..99 -> tipDescription = "Have You worked in the service industry before?"
+            in 100..150 -> tipDescription = "Are you sure you didn't add an extra digit in there?"
+            in 151..300 -> tipDescription = "GOD BLESS THE UNITED STATES OF AMERICA!"
+        }
+    }
 }
