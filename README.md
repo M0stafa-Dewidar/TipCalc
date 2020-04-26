@@ -22,9 +22,8 @@ The following **extensions** are implemented:
 
 ## Video Walkthrough
 
-Here's a walkthrough of implemented user stories:
+Here's a walkthrough of implemented user stories: <link = 'https://i.imgur.com/YNf9vx3.gif' title='Video Walkthrough'>
 
-<img src='https://i.imgur.com/YNf9vx3.gif' title='Video Walkthrough'  width='' alt='Video Walkthrough' />
 
 GIF created with Android Studio.
 
