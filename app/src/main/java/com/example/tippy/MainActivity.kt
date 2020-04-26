@@ -1,11 +1,13 @@
 package com.example.tippy
 
+import android.animation.ArgbEvaluator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.SeekBar
+import androidx.core.content.ContextCompat
 import kotlinx.android.synthetic.main.activity_main.*
 
 private const val TAG = "MainActivity"
@@ -19,10 +21,12 @@ class MainActivity : AppCompatActivity() {
 
         seekBarTip.progress = INITIAL_TIP_PERCENT
         tvTipPercentage.text = "$INITIAL_TIP_PERCENT%"
+        updateTipDescription(INITIAL_TIP_PERCENT)
         seekBarTip.setOnSeekBarChangeListener(object: SeekBar.OnSeekBarChangeListener{
             override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
                 Log.i(TAG, "OnProgressChange $progress%")
                 tvTipPercentage.text = "$progress%"
+                updateTipDescription(progress)
                 computeTipAndTotal()
             }
 
@@ -60,14 +64,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateTipDescription(tipPercent: Int){
-        val tipDescription : String
+        var tipDescription : String = " "
         when(tipPercent){
             in 0..9 -> tipDescription = "Have you no sense of decency?"
             in 10..25 -> tipDescription = "Well, that's more like it."
-            in 26..50 -> tipDescription = "Would you like to try our special dessert on the house?"
-            in 51..99 -> tipDescription = "Have You worked in the service industry before?"
-            in 100..150 -> tipDescription = "Are you sure you didn't add an extra digit in there?"
-            in 151..300 -> tipDescription = "GOD BLESS THE UNITED STATES OF AMERICA!"
+            in 26..50 -> tipDescription = "Would you like to try our special dessert?"
+            in 51..70 -> tipDescription = "You worked in the service industry before?"
+            in 71..85 -> tipDescription = "You sure you didn't add an extra digit ?"
+            in 85..100 -> tipDescription = "GOD BLESS THE UNITED STATES OF AMERICA!"
         }
+        tvTipDescription.text = tipDescription
+        val color = ArgbEvaluator().evaluate(tipPercent.toFloat()/seekBarTip.max,
+            ContextCompat.getColor(this, R.color.colorWorstTip),
+            ContextCompat.getColor(this, R.color.colorBestTip)) as Int
+        tvTipDescription.setTextColor(color)
     }
 }
